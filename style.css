@@ -18,7 +18,37 @@ body {
 }
 
 .alto-contraste .bg-white {
-    background-color: #1e1e1e !important;
+    background-color: #1e1e1e !important;    } else {
+                btnProximo.innerText = "Recomeçar Teste";
+                btnProximo.onclick = function() {
+                    recomecarQuiz();
+                };
+            }
+        }
+
+        function avancarPergunta(proxima) {
+            // Oculta a pergunta anterior
+            document.getElementById(`pergunta-${perguntaAtual}`).classList.add('hidden');
+            document.getElementById('quiz-feedback').classList.add('hidden');
+
+            // Mostra a nova
+            perguntaAtual = proxima;
+            document.getElementById(`pergunta-${proxima}`).classList.remove('hidden');
+            
+            // Lê a nova pergunta automaticamente
+            const textoPergunta = document.getElementById(`pergunta-${proxima}`).querySelector('h4').innerText;
+            falarTexto(`Próxima situação: ${textoPergunta}`);
+        }
+
+        function recomecarQuiz() {
+            document.getElementById(`pergunta-${perguntaAtual}`).classList.add('hidden');
+            document.getElementById('quiz-feedback').classList.add('hidden');
+
+            perguntaAtual = 1;
+            document.getElementById('pergunta-1').classList.remove('hidden');
+            falarTexto("Iniciando o teste de defesa novamente. Vamos à primeira situação.");
+        }
+    </script>
     color: #ffffff !important;
     border: 2px solid #ffffff;
 }
