@@ -1,22 +1,20 @@
-// O tamanho padrão dos navegadores é 16px
+// Gerenciamento de Tamanho da Fonte (Base padrão do navegador é 16px)
 let tamanhoFonteAtual = 16; 
 
 function alterarFonte(valor) {
-    const root = document.documentElement; // Pega a tag <html> em vez do <body>
     tamanhoFonteAtual += valor;
     
-    // Limites de tamanho para não desconfigurar o site
-    if (tamanhoFonteAtual < 12) tamanhoFonteAtual = 12;
-    if (tamanhoFonteAtual > 26) tamanhoFonteAtual = 26;
+    // Limites seguros para idosos não quebrarem o layout
+    if (tamanhoFonteAtual < 12) tamanhoFonteAtual = 12; 
+    if (tamanhoFonteAtual > 26) tamanhoFonteAtual = 26; 
     
-    // Aplica na raiz. O Tailwind vai aumentar tudo proporcionalmente!
-    root.style.fontSize = tamanhoFonteAtual + 'px';
+    // Aplica diretamente na tag raiz <html>. Isso faz o Tailwind recalcular todos os tamanhos (rem)
+    document.documentElement.style.fontSize = tamanhoFonteAtual + 'px';
 }
 
 function resetarFonte() {
-    const root = document.documentElement;
     tamanhoFonteAtual = 16;
-    root.style.fontSize = '16px';
+    document.documentElement.style.fontSize = '16px';
 }
 
 // Alternar Alto Contraste
@@ -25,28 +23,45 @@ function alternarContraste() {
     corpoDocumento.classList.toggle('alto-contraste');
 }
 
-// Sistema de Leitura de Voz (Text-to-Speech)
-let vozAtiva = null;
+// Funções do Novo Modal de Instruções
+function abrirModal() {
+    document.getElementById('modal-ajuda').classList.remove('hidden');
+    // Lê as instruções do modal em voz alta de forma amigável
+    falarTexto("Bem-vindo ao Guia Digital! Este site foi feito para ajudar você a navegar na internet com segurança. Se precisar, use o painel no topo para aumentar as letras ou ativar o modo preto e branco. Você também pode clicar nos botões ouvir para escutar os textos. Clique no botão verde no centro da tela para começar.");
+}
 
+function fecharModal() {
+    document.getElementById('modal-ajuda').classList.add('hidden');
+    // Para a voz do modal imediatamente ao fechar
+    if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+    }
+}
+
+// Sistema de Leitura de Voz (Text-to-Speech)
 function falarTexto(texto) {
     if (window.speechSynthesis.speaking) {
         window.speechSynthesis.cancel();
     }
+
     const sintese = new SpeechSynthesisUtterance(texto);
     sintese.lang = 'pt-BR';
-    sintese.rate = 0.9;
+    sintese.rate = 0.85; // Velocidade ligeiramente reduzida para facilitar a compreensão de idosos
+
     window.speechSynthesis.speak(sintese);
 }
 
 function falarSecao(idSecao) {
     const secao = document.getElementById(idSecao);
     if (!secao) return;
+
     const titulo = secao.querySelector('h3').innerText;
     const paragrafos = Array.from(secao.querySelectorAll('p, li, h4')).map(el => el.innerText).join('. ');
+    
     falarTexto(`${titulo}. ${paragrafos}`);
 }
 
-// Lógica do Quiz
+// Lógica do Quiz / Treinamento
 let perguntaAtual = 1;
 
 function responderQuiz(numeroPergunta, statusResposta, justificativa) {
@@ -72,19 +87,26 @@ function responderQuiz(numeroPergunta, statusResposta, justificativa) {
     lucide.createIcons();
 
     if (numeroPergunta < 3) {
-        btnProximo.innerText = "Ir para Próxima Situação";
-        btnProximo.onclick = function() { avancarPergunta(numeroPergunta + 1); };
+        btnProximo.innerHTML = '<span>Ir para Próxima Situação</span><i data-lucide="arrow-right" class="w-5 h-5"></i>';
+        btnProximo.onclick = function() {
+            avancarPergunta(numeroPergunta + 1);
+        };
     } else {
-        btnProximo.innerText = "Recomeçar Teste";
-        btnProximo.onclick = function() { recomecarQuiz(); };
+        btnProximo.innerHTML = '<span>Recomeçar Teste</span><i data-lucide="rotate-ccw" class="w-5 h-5"></i>';
+        btnProximo.onclick = function() {
+            recomecarQuiz();
+        };
     }
+    lucide.createIcons();
 }
 
 function avancarPergunta(proxima) {
     document.getElementById(`pergunta-${perguntaAtual}`).classList.add('hidden');
     document.getElementById('quiz-feedback').classList.add('hidden');
+
     perguntaAtual = proxima;
     document.getElementById(`pergunta-${proxima}`).classList.remove('hidden');
+    
     const textoPergunta = document.getElementById(`pergunta-${proxima}`).querySelector('h4').innerText;
     falarTexto(`Próxima situação: ${textoPergunta}`);
 }
@@ -92,12 +114,14 @@ function avancarPergunta(proxima) {
 function recomecarQuiz() {
     document.getElementById(`pergunta-${perguntaAtual}`).classList.add('hidden');
     document.getElementById('quiz-feedback').classList.add('hidden');
+
     perguntaAtual = 1;
     document.getElementById('pergunta-1').classList.remove('hidden');
     falarTexto("Iniciando o teste de defesa novamente. Vamos à primeira situação.");
 }
 
-// Só desenha os ícones quando a página termina de carregar (Evita travamentos)
+// Quando carregar a página completa: desenha ícones e abre o Modal de Ajuda
 document.addEventListener('DOMContentLoaded', function() {
     lucide.createIcons();
+    abrirModal();
 });

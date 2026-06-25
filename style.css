@@ -1,5 +1,7 @@
+/* Transição suave e lenta para alteração visual da fonte */
 html {
     transition: font-size 0.2s ease;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -7,51 +9,59 @@ body {
     transition: background-color 0.3s ease;
 }
 
+/* Foco super visível e forte para idosos que navegam por teclado */
 *:focus {
-    outline: 4px solid #3b82f6 !important;
-    outline-offset: 2px;
+    outline: 4px solid #2563eb !important;
+    outline-offset: 3px;
 }
 
-/* ====================================￼
-=====
-   MODO ALTO CONTRASTE (FORÇA BRUTA)
-========================================= */
-.alto-contraste {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-}
-
-.alto-contraste * {
-    color: #ffffff !important;
-}
-
-/* Força todas as caixas, seções e fundos coloridos a ficarem pretos com borda amarela */
-.alto-contraste .bg-white,
-.alto-contraste .bg-blue-50,
-.alto-contraste .bg-amber-50,
-.alto-contraste .bg-emerald-50,
-.alto-contraste .bg-red-50,
-.alto-contraste .bg-slate-100,
+/* =======================================================
+   MÁXIMO ALTO CONTRASTE (SUBSTITUI TUDO DO TAILWIND)
+======================================================= */
+.alto-contraste,
+.alto-contraste body,
+.alto-contraste main,
+.alto-contraste footer,
 .alto-contraste section,
-.alto-contraste a {
-    background-color: #121212 !important;
-    border: 2px solid #ffff00 !important;
-}
-
-/* Ícones do Lucide no modo alto contraste */
-.alto-contraste svg {
-    stroke: #ffff00 !important;
-}
-
-/* A barra de cima do menu */
-.alto-contraste .bg-blue-950 {
+.alto-contraste div,
+.alto-contraste p,
+.alto-contraste li,
+.alto-contraste h1,
+.alto-contraste h2,
+.alto-contraste h3,
+.alto-contraste h4,
+.alto-contraste span,
+.alto-contraste strong {
     background-color: #000000 !important;
-    border-bottom: 2px solid #ffff00 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
 }
 
-/* Botões no modo contraste */
-.alto-contraste button {
+/* Deixa todos os botões e links pretos com borda e texto amarelo forte */
+.alto-contraste button,
+.alto-contraste a {
     background-color: #000000 !important;
     color: #ffff00 !important;
-    border: 2px solid #ffff00 !important;
+    border: 3px solid #ffff00 !important;
+}
+
+/* Efeito invertido ao passar o mouse */
+.alto-contraste button:hover,
+.alto-contraste a:hover {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+}
+
+/* Obriga todos os ícones a ficarem em amarelo de alto contraste */
+.alto-contraste svg,
+.alto-contraste svg * {
+    stroke: #ffff00 !important;
+    fill: none !important;
+}
+
+/* Detalhe específico para o modal ficar perfeito em preto e amarelo */
+.alto-contraste #modal-conteudo {
+    background-color: #000000 !important;
+    border: 5px solid #ffff00 !important;
 }
