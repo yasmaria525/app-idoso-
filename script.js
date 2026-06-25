@@ -3,9 +3,9 @@ lucide.createIcons();
 
 // Gerenciamento de Tamanho da Fonte
 let tamanhoFonteAtual = 18; // Inicial em pixels para o corpo do texto principal
-const corpoDocumento = document.getElementById('app-body');
 
 function alterarFonte(valor) {
+    const corpoDocumento = document.getElementById('app-body');
     tamanhoFonteAtual += valor;
     if (tamanhoFonteAtual < 14) tamanhoFonteAtual = 14; // Limite mínimo
     if (tamanhoFonteAtual > 30) tamanhoFonteAtual = 30; // Limite máximo para evitar quebra extrema
@@ -14,12 +14,14 @@ function alterarFonte(valor) {
 }
 
 function resetarFonte() {
+    const corpoDocumento = document.getElementById('app-body');
     tamanhoFonteAtual = 18;
     corpoDocumento.style.fontSize = '18px';
 }
 
 // Alternar Alto Contraste
 function alternarContraste() {
+    const corpoDocumento = document.getElementById('app-body');
     corpoDocumento.classList.toggle('alto-contraste');
 }
 
