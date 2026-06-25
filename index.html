@@ -1,65 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Pro de Segurança Digital - Viva Seguro</title>
+    <title>Guia de Segurança Digital - Viva Seguro na Internet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col transition-all duration-150" id="app-body">
 
-    <div class="bg-blue-950 text-white py-3 px-4 sticky top-0 z-50 shadow-md no-print">
-        <div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-3">
+    <div class="bg-blue-950 text-white py-3 px-4 sticky top-0 z-50 shadow-md">
+        <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-3">
             <span class="font-bold text-lg flex items-center gap-2">
-                <i data-lucide="shield" class="w-6 h-6 text-amber-400"></i>
-                Painel Pro:
+                <i data-lucide="accessibility" class="w-6 h-6 text-blue-400"></i>
+                Painel de Acessibilidade:
             </span>
             <div class="flex flex-wrap items-center gap-2">
-                <button onclick="alterarFonte(-2)" class="bg-blue-800 hover:bg-blue-700 font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm">A-</button>
-                <button onclick="resetarFonte()" class="bg-blue-800 hover:bg-blue-700 font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm">A Padrão</button>
-                <button onclick="alterarFonte(2)" class="bg-blue-800 hover:bg-blue-700 font-bold py-2 px-4 rounded-lg border border-blue-600 text-base">A+</button>
-                
-                <button onclick="alternarContraste()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm">
-                    <i data-lucide="contrast" class="w-4 h-4"></i> Preto e Branco
+                <button onclick="alterarFonte(-2)" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm flex items-center gap-1" title="Diminuir Letra">
+                    <span>A-</span>
                 </button>
-
-                <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm">
-                    <i data-lucide="printer" class="w-4 h-4"></i> Imprimir Dicas
+                <button onclick="resetarFonte()" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm" title="Tamanho Normal">
+                    <span>A Padrão</span>
                 </button>
-
-                <button onclick="abrirModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm">
-                    <i data-lucide="help-circle" class="w-4 h-4"></i> Ajuda
+                <button onclick="alterarFonte(2)" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg border border-blue-600 text-base flex items-center gap-1" title="Aumentar Letra">
+                    <span class="font-black">A+</span>
+                </button>
+                <button onclick="alternarContraste()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm" title="Alternar Alto Contraste">
+                    <i data-lucide="contrast" class="w-4 h-4"></i>
+                    <span>Preto e Branco</span>
+                </button>
+                <button onclick="abrirModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm" title="Ver instruções de ajuda">
+                    <i data-lucide="help-circle" class="w-4 h-4"></i>
+                    <span>Ajuda (?)</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <header class="bg-gradient-to-r from-blue-800 to-indigo-900 text-white py-12 px-4 text-center shadow-lg relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTAgMGgyMHYyMEgwem0xMCAxMGgxMHYxMEgxMHoiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30"></div>
-        <div class="max-w-3xl mx-auto relative z-10">
-            <span class="bg-amber-500 text-amber-950 font-black px-4 py-1 rounded-full text-sm uppercase tracking-wider mb-4 inline-block shadow-md">Versão Premium</span>
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white py-10 px-4 text-center shadow-lg">
+        <div class="max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-black mb-4 leading-tight">Internet Segura e Fácil</h1>
-            <p class="text-xl md:text-2xl text-blue-100 font-medium">Aprenda a proteger-se de esquemas no telemóvel e computador com dicas simples.</p>
+            <p class="text-xl md:text-2xl text-blue-100 font-medium">Aprenda a se proteger no telemóvel e computador.</p>
         </div>
     </header>
 
     <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
-        
-        <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center gap-6 shadow-sm no-print">
-            <div class="bg-blue-600 text-white p-4 rounded-full"><i data-lucide="shield-check" class="w-12 h-12"></i></div>
+
+        <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+            <div class="bg-blue-600 text-white p-4 rounded-full">
+                <i data-lucide="shield-check" class="w-12 h-12"></i>
+            </div>
             <div class="flex-1 text-center md:text-left">
                 <h2 class="text-2xl font-bold text-blue-900 mb-2">Olá! Vamos aprender juntos?</h2>
-                <p class="text-lg text-blue-800 mb-4">Abaixo encontrará as principais dicas para usar a internet sem medo. Pode ler ou clicar no botão para ouvir o texto em voz alta!</p>
-                <button onclick="falarTexto('Olá! Bem-vindo à versão Profissional do Internet Segura. Explore os temas abaixo.')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow inline-flex items-center gap-3 text-lg transition transform active:scale-95">
-                    <i data-lucide="volume-2" class="w-6 h-6"></i> Ouvir Boas-Vindas
+                <p class="text-lg text-blue-800 mb-4">Escolha um dos temas abaixo para ler as dicas. Pode clicar no botão para ouvir o texto!</p>
+                <button onclick="falarTexto('Olá! Escolha um dos quatro temas abaixo para aprender a proteger-se.')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow inline-flex items-center gap-3 text-lg transition transform active:scale-95">
+                    <i data-lucide="volume-2" class="w-6 h-6"></i>
+                    Ouvir Boas-Vindas
                 </button>
             </div>
         </div>
 
-        <div class="mb-10 no-print">
-            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i data-lucide="compass" class="text-blue-600 w-7 h-7"></i> Escolha o que deseja aprender:</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <a href="#dica-senhas" class="bg-white p-4 rounded-xl border-2 border-slate-200 hover:border-blue-500 text-center font-bold text-lg flex flex-col items-center gap-2 shadow-sm transition-all hover:-translate-y-1"><span class="p-2 bg-amber-100 text-amber-700 rounded-lg"><i data-lucide="key-round" class="w-8 h-8"></i></span> Senhas</a>
-                <a href="#dica-whatsapp" class="bg-white p-4 rounded-xl border-2 border-slate-200 hover:border-blue-500 text-center font-bold text-lg flex flex-col items-center gap-2 shadow-sm transition-all hover:-translate-y-1"><span class="p-2 bg-emerald-100 text-emerald-700 rounded-lg"><i data-lucide="message-square" class="w-8
+        <div class="mb-10">
+            <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 text-slate-800">
+                <i data-lucide="hand-pointing" class="text-blue-600 w-7 h-7"></i>
+                Toque no que deseja aprender:
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button onclick="mostrarDica('dica-senhas')" class="bg-white p-5 rounded-2xl border-4 border-amber-200 hover:border-amber-500 hover:bg-amber-50 text-left font-bold text-xl flex items-center gap-4 transition shadow-sm">
+                    <span class="p-3 bg-amber-100 text-amber-700 rounded-xl"><i data-lucide="key-round" class="w-10 h-10"></i></span>
+                    Criar Senhas Seguras
+                </button>
+                <button onclick="mostrarDica('dica-whatsapp')" class="bg-white p-5 rounded-2xl border-4 border-emerald-200 hover:border-emerald-500 hover:bg-emerald-50 text-left font-bold text-xl flex items-center gap-4 transition shadow-sm">
+                    <span class="p-3 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="message-square" class="w-10 h-10"></i></span>
+                    Golpes no WhatsApp
+                </button>
+                <button onclick="mostrarDica('dica-banco')" class="bg-white p-5 rounded-2xl border-4 border-blue-200 hover:border-blue-500 hover:bg-blue-50 text-left font-bold text-xl flex items-center gap-4 transition shadow-sm">
+                    <span class="p-3 bg-blue-100 text-blue-700 rounded-xl"><i data-lucide="wallet" class="w-10 h-10"></i></span>
+                    Segurança Bancária
+                </button>
+                <button onclick="mostrarDica('dica-links')" class="bg-white p-5 rounded-2xl border-4 border-red-200 hover:border-red-500 hover:bg-red-50 text-left font-bold text-xl flex items-center gap-4 transition shadow-sm">
+                    <span class="p-3 bg-red-100 text-red-700 rounded-xl"><i data-lucide="alert-triangle" class="w-10 h-10"></i></span>
+                    Cuidado com Links Falsos
+                </button>
