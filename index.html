@@ -19,13 +19,16 @@
             <div class="flex flex-wrap items-center gap-2">
                 <button onclick="alterarFonte(-2)" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm flex items-center gap-1" title="Diminuir Letra">
                     <span>A-</span>
+                    <span class="sr-only">Diminuir tamanho da letra</span>
                 </button>
                 <button onclick="resetarFonte()" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg border border-blue-600 text-sm" title="Tamanho Normal">
                     <span>A Padrão</span>
                 </button>
                 <button onclick="alterarFonte(2)" class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg border border-blue-600 text-base flex items-center gap-1" title="Aumentar Letra">
                     <span class="font-black">A+</span>
+                    <span class="sr-only">Aumentar tamanho da letra</span>
                 </button>
+                
                 <button onclick="alternarContraste()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 px-3 rounded-lg flex items-center gap-1 text-sm" title="Alternar Alto Contraste">
                     <i data-lucide="contrast" class="w-4 h-4"></i>
                     <span>Preto e Branco</span>
@@ -42,6 +45,7 @@
     </header>
 
     <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8">
+
         <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
             <div class="bg-blue-600 text-white p-4 rounded-full">
                 <i data-lucide="shield-check" class="w-12 h-12"></i>
@@ -82,6 +86,7 @@
         </div>
 
         <div class="space-y-8 mb-12">
+            
             <section id="dica-senhas" class="bg-white rounded-2xl border-2 border-slate-200 p-6 md:p-8 shadow-md scroll-mt-24">
                 <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                     <div class="flex items-center gap-3">
@@ -91,70 +96,10 @@
                         <h3 class="text-2xl md:text-3xl font-extrabold text-amber-900">1. Como criar Senhas Fortes</h3>
                     </div>
                     <button onclick="falarSecao('dica-senhas')" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-xl flex items-center justify-center gap-2 text-base shadow-sm">
-                        <i data-lucide="volume-2" class="w-5 h-5"></i> Ouvir esta dica
+                        <i data-lucide="volume-2" class="w-5 h-5"></i>
+                        Ouvir esta dica
                     </button>
                 </div>
+                
                 <div class="text-lg space-y-4 text-slate-700">
-                    <p>Muitas pessoas usam datas de aniversário ou o próprio nome como senha. Isso é perigoso!</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-xl">
-                            <h4 class="font-bold text-emerald-900 flex items-center gap-2 mb-1"><i data-lucide="check-circle" class="w-5 h-5"></i> O que fazer:</h4>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Use frases simples. Ex: CafeComPaoDeManha</li>
-                                <li>Misture números. Ex: CafeComPao.10</li>
-                                <li>Anote num caderno em casa.</li>
-                            </ul>
-                        </div>
-                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-xl">
-                            <h4 class="font-bold text-red-900 flex items-center gap-2 mb-1"><i data-lucide="x-circle" class="w-5 h-5"></i> O que NÃO fazer:</h4>
-                            <ul class="list-disc pl-5 space-y-1">
-                                <li>Não use data de nascimento.</li>
-                                <li>Não use a mesma senha para tudo.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <section class="bg-indigo-900 text-white rounded-2xl p-6 md:p-8 shadow-xl mb-12">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-indigo-700 p-3 rounded-xl"><i data-lucide="gamepad-2" class="w-8 h-8 text-indigo-200"></i></span>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-extrabold text-white">Treinamento de Defesa</h3>
-                    <p class="text-indigo-200 text-lg">Faça o teste rápido e veja se você está pronto para se proteger!</p>
-                </div>
-            </div>
-
-            <div id="quiz-container" class="bg-indigo-950/50 rounded-xl p-6 border border-indigo-700 text-lg">
-                <div id="pergunta-1" class="space-y-4">
-                    <span class="bg-indigo-800 text-indigo-200 font-bold px-3 py-1 rounded-full text-sm">Situação 1 de 3</span>
-                    <h4 class="text-xl md:text-2xl font-bold">Seu neto manda mensagem: "Mudei de número. Preciso que pague uma conta urgente". O que você faz?</h4>
-                    <div class="space-y-3 pt-2">
-                        <button onclick="responderQuiz(1, 'errado', 'Não envie o dinheiro! Os bandidos adoram pressa. Primeiro ligue para confirmar.')" class="w-full text-left bg-indigo-900/60 hover:bg-indigo-800 border-2 border-indigo-700 p-4 rounded-xl flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-indigo-700 text-white font-bold flex items-center justify-center shrink-0">A</span>
-                            <span>Mando o dinheiro correndo para ajudá-lo.</span>
-                        </button>
-                        <button onclick="responderQuiz(1, 'certo', 'Excelente escolha! Sempre desconfie de pedidos urgentes de dinheiro.')" class="w-full text-left bg-indigo-900/60 hover:bg-indigo-800 border-2 border-indigo-700 p-4 rounded-xl flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-indigo-700 text-white font-bold flex items-center justify-center shrink-0">B</span>
-                            <span>Não pago nada. Ligo para o número antigo dele.</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="quiz-feedback" class="hidden mt-6 p-5 rounded-xl border-2 text-center space-y-4">
-                    <div class="flex justify-center" id="feedback-icon"></div>
-                    <p id="feedback-text" class="text-xl font-bold"></p>
-                    <button id="btn-proximo" class="bg-white text-indigo-950 font-extrabold py-3 px-6 rounded-xl shadow-md hover:bg-indigo-100 transition inline-flex items-center gap-2 text-lg">
-                        Próxima pergunta
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                    <p>Muitas pessoas usam datas de aniversário ou o próprio nome como senha. Isso é muito perigoso! Descubra como criar uma senha fácil de lembrar e difícil de adivinhar:</p>
